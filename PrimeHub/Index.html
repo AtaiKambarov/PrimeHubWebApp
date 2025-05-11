@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primehub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            height: 100vh;
+        }
+
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1s; }
+        .delay-3 { animation-delay: 1.5s; }
+        .delay-4 { animation-delay: 2s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-top: 10px;
+            max-width: 600px;
+        }
+
+        .button {
+            margin-top: 30px;
+            background-color: #d98400;
+            color: #000;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #a66400;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .button { font-size: 0.9rem; padding: 10px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            p { font-size: 0.9rem; }
+            .button { font-size: 0.8rem; padding: 8px 16px; }
+            .logo { max-width: 200px; }
+        }
+
+
+        @keyframes swing {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+    </style>
+    
+</head>
+<body>
+
+<!-- Контент -->
+<div class="container">
+    <img src="Лого.png" alt="Primehub Logo" class="logo fade-in delay-1" />
+    <h1 class="fade-in delay-2">Добро пожаловать в PrimeHub</h1>
+    <p class="fade-in delay-3">Ваше премиальное цифровое пространство. Создано для креатива, работает на простоте.</p>
+    <button class="button fade-in delay-4">Связаться с нами</button>
+    <footer class="fade-in delay-4">
+        &copy; 2025 Primehub. Все права защищены.
+    </footer>
+</div>
+
+</body>
+</html>

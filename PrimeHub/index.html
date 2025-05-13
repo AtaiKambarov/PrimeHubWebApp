@@ -1,129 +1,338 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Primehub</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Primehub</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow: hidden;
-            text-align: center;
-            padding: 20px;
-            height: 100vh;
-        }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #111010;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.5s; }
+    .delay-2 { animation-delay: 1s; }
+    .delay-3 { animation-delay: 1.5s; }
+    .delay-4 { animation-delay: 2s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .text-logo {
+      font-size: 5rem;
+      font-weight: bold;
+      margin-bottom: 50px;
+    }
+
+    .hub {
+      background-color: #d98400;
+      color: #000;
+      padding: 0 10px;
+      border-radius: 6px;
+      margin-left: 8px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 10px;
+      max-width: 700px;
+    }
+
+    .button {
+      margin-top: 30px;
+      background-color: #d98400;
+      color: #000;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #a66400;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #111111ee;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      z-index: 999;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #d98400;
+    }
+
+    .about-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 20px 25px;
+  border-radius: 16px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.4),          /* обычная тень */
+    0 0 20px rgba(217, 132, 0, 0.1);         /* мягкое свечение оранжевого цвета */
+  max-width: 320px;
+  flex: 1 1 300px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(217, 132, 0, 0.25);
+}
+
+.card p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+  line-height: 1.5;
+}
 
 
-        .container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
+    .contact-card {
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      max-width: 700px;
+      width: 90%;
+      text-align: left;
+    }
 
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
-        }
+    .contact-card h1 {
+      text-align: center;
+    }
 
-        .delay-1 { animation-delay: 0.5s; }
-        .delay-2 { animation-delay: 1s; }
-        .delay-3 { animation-delay: 1.5s; }
-        .delay-4 { animation-delay: 2s; }
+    .contact-card p {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 15px 0;
+    }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
+    .contact-card a {
+      color: #d98400;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .logo {
-            max-width: 500px;
-            width: 100%;
-            margin-bottom: 50px;
-        }
+    .contact-card img {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 0;
-        }
+    .map-container {
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-        p {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-top: 10px;
-            max-width: 600px;
-        }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-        .button {
-            margin-top: 30px;
-            background-color: #d98400;
-            color: #000;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .button:hover {
-            background-color: #a66400;
-        }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+      padding: 20px;
+    }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #999;
-        }
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .button { font-size: 0.9rem; padding: 10px 20px; }
+    }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            p { font-size: 1rem; }
-            .button { font-size: 0.9rem; padding: 10px 20px; }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.5rem; }
-            p { font-size: 0.9rem; }
-            .button { font-size: 0.8rem; padding: 8px 16px; }
-            .logo { max-width: 200px; }
-        }
-
-
-        @keyframes swing {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            50% { transform: rotate(-10deg); }
-            75% { transform: rotate(5deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-    </style>
-    
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      p { font-size: 0.9rem; }
+      .button { font-size: 0.8rem; padding: 8px 16px; }
+      .text-logo { font-size: 3rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Контент -->
-<div class="container">
-    <img src="Лого.png" alt="Primehub Logo" class="logo fade-in delay-1" />
+  <nav>
+    <a href="#home">Главная</a>
+    <a href="#about">О нас</a>
+    <a href="#why">Почему мы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+
+  <section id="home" class="container">
+    <div class="text-logo fade-in delay-1">
+      Prime<span class="hub">hub</span>
+    </div>
     <h1 class="fade-in delay-2">Добро пожаловать в PrimeHub</h1>
     <p class="fade-in delay-3">Ваше премиальное цифровое пространство. Создано для креатива, работает на простоте.</p>
-    <button class="button fade-in delay-4">Связаться с нами</button>
-    <footer class="fade-in delay-4">
-        &copy; 2025 Primehub. Все права защищены.
-    </footer>
-</div>
+    <button class="button fade-in delay-4" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">Связаться с нами</button>
+  </section>
+
+    <section id="about" class="animate-on-scroll">
+  <h1>О нас</h1>
+  <div class="about-cards">
+    <div class="card">
+      <p>
+        <strong>PrimeHub</strong> — это не просто звучное имя. Наше название говорит само за себя: “Prime Hub” — в переводе “Главный Узел”.<br><br>
+        Мы — главный узел вашего товарооборота. Связываем селлера с маркетплейсами, оптимизируем логистику, ускоряем доставку и берём на себя всю рутину, чтобы бизнес работал без сбоев и без прелюдий.
+      </p>
+    </div>
+    <div class="card">
+      <p>
+        Мы не любим лишнего — в словах, в действиях, в интерфейсах. У нас всё просто: взяли, сделали, сдали.<br><br>
+        Работаем по делу, без официоза и с акцентом на результат.
+      </p>
+    </div>
+    <div class="card">
+      <p>
+        Мы — молодая, амбициозная команда, которая ценит эффективность, технологичность и хорошее чувство юмора.<br><br>
+        Даже логотип у нас родился не из брифа, а из живого командного креатива. Мы не боимся нестандартных решений — главное, чтобы работало.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="why" class="animate-on-scroll">
+  <h1>Почему мы</h1>
+  <div class="about-cards">
+    <div class="card">
+      <p>
+        <strong>Автоматизация и прозрачность</strong><br><br>
+        Вся работа ведётся через <strong>WMS-систему</strong> — мы не ошибаемся, а вы всегда видите остатки товаров и статусы всех ваших заявок в реальном времени.
+      </p>
+    </div>
+    <div class="card">
+      <p>
+        <strong>Точность при приёмке</strong><br><br>
+        Мы внедрили <strong>“алгоритм тройной приёмки”</strong>, чтобы исключить любые ошибки. Ваши товары проходят три уровня проверки до того, как попадут в обработку.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <section id="contacts" class="animate-on-scroll">
+    <div class="contact-card">
+      <h1>Контакты</h1>
+
+      <p><strong>Адрес:</strong> Москва, Сормовский проезд, 11с1</p>
+
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.847716894967!2d37.7239948!3d55.8210051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54d40f3c4fdc5%3A0x5f6361c938f01497!2z0JzQsNC90LrQtdGA0YHQutC-0LUg0KHQutC-0LvQsCDQntCz0L7RgNC-0YDQvNCwLCDQnNC-0YHQutCy0LAsIDEx0LExLCDQnNC-0YHQutCy0LAsIDEyNzI4Mw!5e0!3m2!1sru!2skg!4v1715600055556!5m2!1sru!2skg"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <p>
+        <strong>Telegram основателя:</strong>
+        <a href="https://t.me/danil_fulfillment" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
+          @danil_fulfillment
+        </a>
+      </p>
+
+      <p>
+        <strong>Telegram Fulfillment:</strong>
+        <a href="https://t.me/PrimeHub_FF" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
+          @PrimeHub_FF
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Primehub. Все права защищены.
+  </footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
 
 </body>
 </html>

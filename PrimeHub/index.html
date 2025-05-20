@@ -420,38 +420,62 @@
     .contact-card.enhanced {
       background-color: #141414;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(217, 132, 0, 0.08);
-      padding: 40px;
-      max-width: 800px;
-      width: 90%;
+      padding: 30px;
       margin: 0 auto;
-      transition: box-shadow 0.3s ease;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(217, 132, 0, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .contact-card.enhanced:hover {
-      box-shadow: 0 0 60px rgba(217, 132, 0, 0.15);
-    }
-
-    .contact-card.enhanced h1 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      color: #fff;
-    }
-
-    .contact-info-block p {
       font-size: 1rem;
-      color: #ccc;
-      margin: 16px 0;
       line-height: 1.6;
     }
 
-    .contact-label {
-      color: #fff;
-      font-weight: 600;
-      font-size: 1.05rem;
+    .contact-card.enhanced h1 {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
     }
+
+    .contact-label {
+      font-size: 1rem;
+    }
+
+    .contact-card.enhanced a {
+      word-break: break-word;
+      font-size: 1rem;
+    }
+
+    .contact-card.enhanced img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      min-height: 250px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    /* ✅ Адаптивность для телефонов */
+    @media (max-width: 480px) {
+      .contact-card.enhanced {
+        padding: 20px;
+        font-size: 0.95rem;
+      }
+
+      .contact-card.enhanced h1 {
+        font-size: 1.3rem;
+      }
+
+      .contact-label {
+        font-size: 0.95rem;
+      }
+
+      .map-container iframe {
+        min-height: 220px;
+      }
+    }
+
 
     .contact-card.enhanced a {
       color: #f6b44d;

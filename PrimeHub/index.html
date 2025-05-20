@@ -4,23 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Primehub</title>
-  <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poetsen+One&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
+<style>
+    /* === Общие стили === */
     * {
       box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
-    html, body {
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: #111010;
+      background: #0a0a0a;
       color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: "Montserrat", sans-serif;
     }
 
     section {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -29,10 +36,20 @@
       text-align: center;
     }
 
-    .container {
-      text-align: center;
+    h1 {
+      font-size: 2.5rem;
+      font-family: "Rubik Mono One", monospace;
+      margin: 0;
     }
 
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 10px;
+      max-width: 700px;
+    }
+
+    /* === Анимация появления === */
     .fade-in {
       opacity: 0;
       animation: fadeIn 1.5s ease-in-out forwards;
@@ -44,147 +61,7 @@
     .delay-4 { animation-delay: 2s; }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    .text-logo {
-      font-size: 5rem;
-      font-weight: bold;
-      margin-bottom: 50px;
-    }
-
-    .hub {
-      background-color: #d98400;
-      color: #000;
-      padding: 0 10px;
-      border-radius: 6px;
-      margin-left: 8px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-top: 10px;
-      max-width: 700px;
-    }
-
-    .button {
-      margin-top: 30px;
-      background-color: #d98400;
-      color: #000;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #a66400;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #111111ee;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-      z-index: 999;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #d98400;
-    }
-
-    .about-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-  max-width: 1200px;
-}
-
-.card {
-  background-color: #1a1a1a;
-  padding: 20px 25px;
-  border-radius: 16px;
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.4),          /* обычная тень */
-    0 0 20px rgba(217, 132, 0, 0.1);         /* мягкое свечение оранжевого цвета */
-  max-width: 320px;
-  flex: 1 1 300px;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(217, 132, 0, 0.25);
-}
-
-.card p {
-  font-size: 1rem;
-  color: #ccc;
-  margin: 0;
-  line-height: 1.5;
-}
-
-
-    .contact-card {
-      background-color: #1a1a1a;
-      border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-      padding: 30px;
-      max-width: 700px;
-      width: 90%;
-      text-align: left;
-    }
-
-    .contact-card h1 {
-      text-align: center;
-    }
-
-    .contact-card p {
-      font-size: 1rem;
-      color: #ccc;
-      margin: 15px 0;
-    }
-
-    .contact-card a {
-      color: #d98400;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .contact-card img {
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-
-    .map-container {
-      margin: 20px 0;
-      border-radius: 12px;
-      overflow: hidden;
+      to { opacity: 1; }
     }
 
     .animate-on-scroll {
@@ -198,6 +75,411 @@
       transform: translateY(0);
     }
 
+    /* === Шапка и навигация === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .menu-icon span {
+      height: 3px;
+      width: 25px;
+      background-color: #fff;
+      display: block;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .input {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      background-color: transparent;
+      border-radius: 10px;
+      padding: 10px 0;
+    }
+
+    .value {
+      font-size: 15px;
+      background-color: transparent;
+      border: none;
+      padding: 10px;
+      color: white;
+      display: flex;
+      align-items: center;
+      position: relative;
+      gap: 5px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .value.active {
+      background-color: #d98400;
+      color: #000;
+    }
+
+    .value:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: flex;
+      }
+
+      .input {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 10px;
+      }
+
+      .menu-toggle:checked + .menu-icon + .input {
+        display: flex;
+      }
+    }
+
+    /* === Hero-секция === */
+    .home-hero {
+      position: relative;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0a0a0a 0%, #111010 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-top: 80px;
+      text-align: center;
+      overflow: hidden;
+      background-size: cover;
+    }
+
+    @keyframes float {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.03); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      font-weight: bold;
+      color: transparent;
+      display: flex;
+      gap: 20px;
+      z-index: 1;
+      transition: filter 0.4s ease;
+      pointer-events: auto;
+      user-select: none;
+      white-space: nowrap;
+      transition: transform 0.2s ease-out;
+      animation: float 6s ease-in-out infinite;
+        opacity: 0;
+        animation: float 6s ease-in-out infinite, fadeIn 1.5s ease forwards;
+    }
+    
+    .hero-text-svg svg {
+      width: 100%;
+      max-width: 1300px;
+      height: auto;
+      pointer-events: auto;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 1000px;
+      padding-left: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.05);
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+    }
+
+    .btn:hover::before {
+      left: 150%;
+    }
+
+    .btn:hover {
+      transform: scale(1.04);
+    }
+
+    .btn--light {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .btn--light:hover {
+      background-color: #e0e0e0;
+    }
+
+    .btn--outline {
+      border: 1px solid #fff;
+      color: #fff;
+    }
+
+    .btn--outline:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.5rem;
+      color: #888;
+      animation: bounce 1.5s infinite;
+      padding-right: 12px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    .text-logo {
+      font-size: 5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hub {
+      background-color: #d98400;
+      color: #000;
+      padding: 0 10px;
+      border-radius: 6px;
+      margin-left: 4px;
+    }
+
+    /* === Карточки секций === */
+    .about-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      max-width: 1200px;
+    }
+
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 1000px;
+      margin-top: 30px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .why-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      padding: 20px 25px;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(217, 132, 0, 0.1);
+      max-width: 320px;
+      flex: 1 1 300px;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(217, 132, 0, 0.25);
+      transition: transform 0.8s ease, box-shadow 0.8s ease, border 0.5s ease;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 30px;
+      position: relative;
+      overflow: hidden;
+      transition: border 0.3s ease;
+      border-radius: 12px;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card-bg-icon {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      opacity: 0.04;
+      width: 100%;
+      height: 120px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom left;
+      pointer-events: none;
+    }
+
+    /* === Контакты === */
+    .contact-card.enhanced {
+      background-color: #141414;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(217, 132, 0, 0.08);
+      padding: 40px;
+      max-width: 800px;
+      width: 90%;
+      margin: 0 auto;
+      transition: box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-card.enhanced:hover {
+      box-shadow: 0 0 60px rgba(217, 132, 0, 0.15);
+    }
+
+    .contact-card.enhanced h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .contact-info-block p {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 16px 0;
+      line-height: 1.6;
+    }
+
+    .contact-label {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .contact-card.enhanced a {
+      color: #f6b44d;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card.enhanced a:hover {
+      color: #fff;
+    }
+
+    .contact-card.enhanced img {
+      vertical-align: middle;
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+      filter: brightness(1.1);
+    }
+
+    .map-container {
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    /* === Подвал === */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -205,134 +487,334 @@
       padding: 20px;
     }
 
+    /* === Адаптивность === */
     @media (max-width: 768px) {
       h1 { font-size: 2rem; }
       p { font-size: 1rem; }
-      .button { font-size: 0.9rem; padding: 10px 20px; }
+      .btn { font-size: 0.9rem; padding: 10px 20px; }
     }
 
     @media (max-width: 480px) {
       h1 { font-size: 1.5rem; }
       p { font-size: 0.9rem; }
-      .button { font-size: 0.8rem; padding: 8px 16px; }
+      .btn { font-size: 0.8rem; padding: 8px 16px; }
       .text-logo { font-size: 3rem; }
     }
+
+    /* ✅ Адаптивность */
+
+    @media (max-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .primehub-cards h2 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 30px 24px;
+      }
+
+      .card-button {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .primehub-cards {
+        padding: 80px 20px;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+      }
+
+      .card p {
+        font-size: 0.9rem;
+      }
+    }
+
   </style>
 </head>
 <body>
-
-  <nav>
-    <a href="#home">Главная</a>
-    <a href="#about">О нас</a>
-    <a href="#why">Почему мы</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
-
-  <section id="home" class="container">
-    <div class="text-logo fade-in delay-1">
-      Prime<span class="hub">hub</span>
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo">Prime<span class="hub">hub</span></div>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav class="input">
+        <a href="#home" class="value">Главная</a>
+        <a href="#about" class="value">О нас</a>
+        <a href="#why" class="value">Почему мы</a>
+        <a href="#contacts" class="value">Контакты</a>
+      </nav>
     </div>
-    <h1 class="fade-in delay-2">Добро пожаловать в PrimeHub</h1>
-    <p class="fade-in delay-3">Ваше премиальное цифровое пространство. Создано для креатива, работает на простоте.</p>
-    <button class="button fade-in delay-4" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">Связаться с нами</button>
-  </section>
+  </header>
+
+  <main>
+    <section id="home" class="home-hero">
+      <div class="hero-bg-text" id="heroText">
+        <svg id="glowSvg" viewBox="0 0 1200 300" width="100%" height="auto">
+        <defs>
+          <linearGradient id="baseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.70)" />
+            <stop offset="10%" stop-color="rgba(255,255,255,0.60)" />
+            <stop offset="20%" stop-color="rgba(255,255,255,0.50)" />
+            <stop offset="30%" stop-color="rgba(255,255,255,0.40)" />
+            <stop offset="40%" stop-color="rgba(255,255,255,0.30)" />
+            <stop offset="50%" stop-color="rgba(255,255,255,0.10)" />
+            <stop offset="60%" stop-color="rgba(255,255,255,0.05)" />
+            <stop offset="70%" stop-color="rgba(255,255,255,0.02)" />
+            <stop offset="100%" stop-color="rgba(255,255,255,0.01)" />
+          </linearGradient>
+          <radialGradient id="cursorGlow" cx="50%" cy="50%" r="13%" fx="50%" fy="50%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#D68B00" stop-opacity="1" />
+            <stop offset="10%" stop-color="#E9A319" stop-opacity="0.9" />
+            <stop offset="20%" stop-color="#FFC94A" stop-opacity="0.8" />
+            <stop offset="30%" stop-color="#FFDE7B" stop-opacity="0.7" />
+            <stop offset="40%" stop-color="#F3B54D" stop-opacity="0.6" />
+            <stop offset="50%" stop-color="#FFD174" stop-opacity="0.5" />
+            <stop offset="60%" stop-color="#E6B522" stop-opacity="0.4" />
+            <stop offset="70%" stop-color="#FFD891" stop-opacity="0.3" />
+            <stop offset="80%" stop-color="#FEDCB2" stop-opacity="0.2" />
+            <stop offset="100%" stop-color="#FED2E2" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+
+        <mask id="combinedMask">
+          <rect width="100%" height="100%" fill="url(#cursorGlow)" />
+        </mask>
+
+        <pattern id="combinedGlow" patternUnits="userSpaceOnUse" width="1200" height="300">
+          <rect width="100%" height="100%" fill="url(#baseGradient)" />
+          <rect width="100%" height="100%" fill="url(#cursorGlow)" mask="url(#combinedMask)" />
+        </pattern>
+
+        <text
+          id="glowText"
+          x="50%"
+          y="50%"
+          dominant-baseline="middle"
+          text-anchor="middle"
+          font-size="140"
+          font-family="Arial, sans-serif"
+          stroke="url(#combinedGlow)"
+          stroke-width="1.8"
+          fill="transparent"
+          font-weight="600"
+          letter-spacing="4">
+          Primehub
+        </text>
+      </svg>
+      </div>
+      <div class="hero-content">
+        <p>Фулфилмент без прелюдий</p>
+        <p>PrimeHub — ваш цифровой узел для быстрой логистики, автоматизации и полного контроля над товарооборотом.</p>
+        <div class="hero-buttons">
+          <a href="#contacts" class="btn btn--light">Связаться</a>
+          <a href="#about" class="btn btn--outline">Узнать больше</a>
+        </div>
+      </div>
+      <div class="scroll-indicator">↓</div>
+    </section>
 
     <section id="about" class="animate-on-scroll">
-  <h1>О нас</h1>
-  <div class="about-cards">
-    <div class="card">
-      <p>
-        <strong>PrimeHub</strong> — это не просто звучное имя. Наше название говорит само за себя: “Prime Hub” — в переводе “Главный Узел”.<br><br>
-        Мы — главный узел вашего товарооборота. Связываем селлера с маркетплейсами, оптимизируем логистику, ускоряем доставку и берём на себя всю рутину, чтобы бизнес работал без сбоев и без прелюдий.
-      </p>
-    </div>
-    <div class="card">
-      <p>
-        Мы не любим лишнего — в словах, в действиях, в интерфейсах. У нас всё просто: взяли, сделали, сдали.<br><br>
-        Работаем по делу, без официоза и с акцентом на результат.
-      </p>
-    </div>
-    <div class="card">
-      <p>
-        Мы — молодая, амбициозная команда, которая ценит эффективность, технологичность и хорошее чувство юмора.<br><br>
-        Даже логотип у нас родился не из брифа, а из живого командного креатива. Мы не боимся нестандартных решений — главное, чтобы работало.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-  <section id="why" class="animate-on-scroll">
-  <h1>Почему мы</h1>
-  <div class="about-cards">
-    <div class="card">
-      <p>
-        <strong>Автоматизация и прозрачность</strong><br><br>
-        Вся работа ведётся через <strong>WMS-систему</strong> — мы не ошибаемся, а вы всегда видите остатки товаров и статусы всех ваших заявок в реальном времени.
-      </p>
-    </div>
-    <div class="card">
-      <p>
-        <strong>Точность при приёмке</strong><br><br>
-        Мы внедрили <strong>“алгоритм тройной приёмки”</strong>, чтобы исключить любые ошибки. Ваши товары проходят три уровня проверки до того, как попадут в обработку.
-      </p>
-    </div>
-  </div>
-</section>
-
-  <section id="contacts" class="animate-on-scroll">
-    <div class="contact-card">
-      <h1>Контакты</h1>
-
-      <p><strong>Адрес:</strong> Москва, Сормовский проезд, 11с1</p>
-
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.847716894967!2d37.7239948!3d55.8210051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54d40f3c4fdc5%3A0x5f6361c938f01497!2z0JzQsNC90LrQtdGA0YHQutC-0LUg0KHQutC-0LvQsCDQntCz0L7RgNC-0YDQvNCwLCDQnNC-0YHQutCy0LAsIDEx0LExLCDQnNC-0YHQutCy0LAsIDEyNzI4Mw!5e0!3m2!1sru!2skg!4v1715600055556!5m2!1sru!2skg"
-          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <h1>О нас</h1>
+      <div class="about-cards">
+        <div class="card">
+          <p>
+            <strong>PrimeHub</strong><br><br>
+            — это не просто звучное имя. Наше название говорит само за себя: “Prime Hub” — в переводе “Главный Узел”.
+              Мы — главный узел вашего товарооборота. Связываем селлера с маркетплейсами, оптимизируем логистику, ускоряем доставку и берём на себя всю рутину, чтобы бизнес работал без сбоев и без прелюдий.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            <strong>Мы не любим лишнего</strong><br><br>
+            в словах, в действиях, в интерфейсах. У нас всё просто: взяли, сделали, сдали. Работаем по делу, без официоза и с акцентом на результат.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            <strong>Команда</strong><br><br>
+            Мы — молодая, амбициозная команда, которая ценит эффективность, технологичность и хорошее чувство юмора.
+              Даже логотип у нас родился не из брифа, а из живого командного креатива. Мы не боимся нестандартных решений — главное, чтобы работало.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <p>
-        <strong>Telegram основателя:</strong>
-        <a href="https://t.me/danil_fulfillment" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
-          @danil_fulfillment
-        </a>
-      </p>
+    <section id="why" class="animate-on-scroll">
+      <h1>Почему мы</h1>
 
-      <p>
-        <strong>Telegram Fulfillment:</strong>
-        <a href="https://t.me/PrimeHub_FF" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
-          @PrimeHub_FF
-        </a>
-      </p>
-    </div>
-  </section>
+      <div class="why-cards">
+
+        <!-- 1 -->
+        <div class="card">
+          <p>
+            <strong>Автоматизация и прозрачность</strong><br><br>
+            Вся работа ведётся через <strong>WMS-систему</strong> — мы не ошибаемся, а вы в любой момент видите остатки товаров и статусы заявок.
+          </p>
+        </div>
+
+        <!-- 2 -->
+        <div class="card">
+          <p>
+            <strong>Точность при приёмке</strong><br><br>
+            Мы внедрили <strong>«алгоритм тройной приёмки»</strong>, чтобы исключить любые ошибки. Товар проходит три уровня проверки до обработки.
+          </p>
+        </div>
+
+        <!-- 3  (НОВАЯ) -->
+        <div class="card">
+          <p>
+            <strong>Рядом с рынками — быстрый забор</strong><br><br>
+            Наш склад расположен рядом с ключевыми рынками: собственный водитель ежедневно забирает груз и оперативно отправляет его на московские и региональные склады.
+          </p>
+        </div>
+
+        <!-- 4  (НОВАЯ) -->
+        <div class="card">
+          <p>
+            <strong>Глубокое погружение в задачи клиента</strong><br><br>
+            Мы разбираемся в ваших «болях», предлагаем решения и доводим их до идеала. Цель — чтобы всё работало. Поэтому клиенты остаются с нами надолго, а ушедшие часто возвращаются.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Contact section -->
+    <section id="contacts" class="animate-on-scroll">
+      <div class="contact-card enhanced">
+        <h1>Связь с нами</h1>
+
+        <div class="contact-info-block">
+          <p>
+            <span class="contact-label">🏢 Адрес:</span><br>
+            Москва, Сормовский проезд, 11с1
+          </p>
+
+          <p>
+            <span class="contact-label">👤 Telegram канал основателя:</span><br>
+            <a href="https://t.me/danil_fulfillment" target="_blank">
+              <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
+              @danil_fulfillment
+            </a>
+          </p>
+
+          <p>
+            <span class="contact-label">📦 Связаться с нами</span><br>
+            <a href="https://t.me/PrimeHub_FF" target="_blank">
+              <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
+              @PrimeHub_FF
+            </a>
+          </p>
+        </div>
+
+        <div class="map-container">
+          <div class="map-fallback">
+            <p>Карта недоступна? <a href="https://yandex.ru/maps/?ll=37.724016%2C55.821052&z=16&l=map" target="_blank">Открыть в Яндекс.Картах</a></p>
+          </div>
+          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.724016%2C55.821052&z=16&l=map&pt=37.724016,55.821052,pm2rdm"
+                  width="100%" height="300" frameborder="0" allowfullscreen="true" style="border:0;">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 Primehub. Все права защищены.
   </footer>
 
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
+  <script>
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".value");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
     });
-  }, {
-    threshold: 0.1
-  });
 
-  document.querySelectorAll('.animate-on-scroll').forEach(section => {
-    observer.observe(section);
-  });
-</script>
+    const svg = document.getElementById('glowSvg');
+    const gradient = svg.querySelector('#cursorGlow');
 
+    let targetX = 50;
+    let targetY = 50;
+    let currentX = 50;
+    let currentY = 50;
 
+    function animateGradient() {
+      // Плавное движение к цели
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      gradient.setAttribute('cx', `${currentX}%`);
+      gradient.setAttribute('cy', `${currentY}%`);
+      gradient.setAttribute('fx', `${currentX}%`);
+      gradient.setAttribute('fy', `${currentY}%`);
+
+      requestAnimationFrame(animateGradient);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      const rect = svg.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      targetX = (x / rect.width) * 100;
+      targetY = (y / rect.height) * 100;
+    });
+
+    animateGradient();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>

@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poetsen+One&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <style>
     /* === Общие стили === */
     * {
@@ -98,8 +99,15 @@
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
+      font-family: 'Archivo Black', sans-serif;
     }
 
+      .logo .highlight {
+    background-color: #fca311; /* оранжевый блок */
+    color: black;
+    padding: 0 0.4rem;
+    border-radius: 6px;
+  }
     .menu-icon {
       display: none;
       flex-direction: column;
@@ -308,9 +316,10 @@
     .hub {
       background-color: #d98400;
       color: #000;
-      padding: 0 10px;
-      border-radius: 6px;
-      margin-left: 4px;
+      padding: 0 3px;
+      border-radius: 3px;
+      margin-left: 3px;
+      font-family: 'Archivo Black', sans-serif;
     }
 
     /* === Карточки секций === */
@@ -417,91 +426,95 @@
     }
 
     /* === Контакты === */
-    .contact-card.enhanced {
-      background-color: #141414;
-      border-radius: 20px;
-      padding: 30px;
-      margin: 0 auto;
-      max-width: 700px;
-      width: 100%;
-      box-shadow: 0 0 30px rgba(217, 132, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+.contacts-futuristic {
+  background: #0a0a0a;
+  padding: 80px 20px;
+  color: #fff;
+  text-align: center;
+}
 
-    .contact-card.enhanced h1 {
-      font-size: 1.6rem;
-      margin-bottom: 24px;
-    }
+.contacts-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-family: "Rubik Mono One", monospace;
+}
 
-    .contact-label {
-      font-size: 1rem;
-    }
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-    .contact-card.enhanced a {
-      word-break: break-word;
-      font-size: 1rem;
-    }
+.contact-tile {
+  background: linear-gradient(145deg, #131313, #0f0f0f);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 0 30px rgba(217, 132, 0, 0.05);
+  transition: transform 0.3s ease, border 0.3s ease;
+}
 
-    .contact-card.enhanced img {
-      width: 20px;
-      height: 20px;
-    }
+.contact-tile:hover {
+  transform: translateY(-6px);
+  border-color: rgba(217, 132, 0, 0.3);
+}
 
-    .map-container iframe {
-      width: 100%;
-      min-height: 250px;
-      border: none;
-      border-radius: 12px;
-    }
+.tile-icon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
 
-    /* ✅ Адаптивность для телефонов */
-    @media (max-width: 480px) {
-      .contact-card.enhanced {
-        padding: 20px;
-        font-size: 0.95rem;
-      }
+.tile-text h3 {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+  color: #f6b44d;
+}
 
-      .contact-card.enhanced h1 {
-        font-size: 1.3rem;
-      }
+.tile-text p,
+.tile-text a {
+  font-size: 0.95rem;
+  color: #ccc;
+  text-decoration: none;
+  word-break: break-word;
+}
 
-      .contact-label {
-        font-size: 0.95rem;
-      }
+.tile-text a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 
-      .map-container iframe {
-        min-height: 220px;
-      }
-    }
+.map-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.04);
+}
 
+.contact-tile.full {
+  grid-column: 1 / -1; /* Карта занимает всю ширину */
+}
 
-    .contact-card.enhanced a {
-      color: #f6b44d;
-      font-weight: bold;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+/* Адаптивность */
+@media (max-width: 768px) {
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .contact-card.enhanced a:hover {
-      color: #fff;
-    }
+  .contact-tile {
+    padding: 20px;
+  }
 
-    .contact-card.enhanced img {
-      vertical-align: middle;
-      margin-right: 8px;
-      width: 20px;
-      height: 20px;
-      filter: brightness(1.1);
-    }
+  .map-wrapper iframe {
+    height: 240px;
+  }
+}
 
-    .map-container {
-      margin-top: 30px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-    }
 
     /* === Подвал === */
     footer {
@@ -726,40 +739,44 @@
 
 
     <!-- Contact section -->
-    <section id="contacts" class="animate-on-scroll">
-      <div class="contact-card enhanced">
-        <h1>Связь с нами</h1>
+    <section id="contacts" class="contacts-futuristic">
+      <h2 class="contacts-title">Контакты</h2>
+      <div class="contacts-grid">
 
-        <div class="contact-info-block">
-          <p>
-            <span class="contact-label">🏢 Адрес:</span><br>
-            Москва, Сормовский проезд, 11с1
-          </p>
-
-          <p>
-            <span class="contact-label">👤 Telegram канал основателя:</span><br>
-            <a href="https://t.me/danil_fulfillment" target="_blank">
-              <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
-              @danil_fulfillment
-            </a>
-          </p>
-
-          <p>
-            <span class="contact-label">📦 Связаться с нами</span><br>
-            <a href="https://t.me/FF_PHUB" target="_blank">
-              <img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram" />
-              @PrimeHub_FF
-            </a>
-          </p>
+        <div class="contact-tile">
+          <div class="tile-icon">📍</div>
+          <div class="tile-text">
+            <h3>Адрес</h3>
+            <p>Москва, Сормовский проезд, 11с1</p>
+          </div>
         </div>
 
-        <div class="map-container">
-          <div class="map-fallback">
-            <p>Карта недоступна? <a href="https://yandex.ru/maps/?ll=37.724016%2C55.821052&z=16&l=map" target="_blank">Открыть в Яндекс.Картах</a></p>
+        <div class="contact-tile">
+          <div class="tile-icon">👤</div>
+          <div class="tile-text">
+            <h3>Телеграм канал основателя</h3>
+            <a href="https://t.me/danil_fulfillment" target="_blank">@danil_fulfillment</a>
           </div>
-          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.724016%2C55.821052&z=16&l=map&pt=37.724016,55.821052,pm2rdm"
-                  width="100%" height="300" frameborder="0" allowfullscreen="true" style="border:0;">
-          </iframe>
+        </div>
+
+        <div class="contact-tile">
+          <div class="tile-icon">📦</div>
+          <div class="tile-text">
+            <h3>Связаться с нами</h3>
+            <a href="https://t.me/FF_PHUB" target="_blank">@PrimeHub_FF</a>
+          </div>
+        </div>
+
+        <div class="contact-tile full">
+          <div class="tile-text">
+            <h3>Локация на карте</h3>
+            <div class="map-wrapper">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=37.724016%2C55.821052&z=16&pt=37.724016,55.821052,pm2rdm"
+                width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>

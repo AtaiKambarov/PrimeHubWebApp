@@ -777,9 +777,18 @@
     let currentY = 50;
 
     function animateGradient() {
-      // Плавное движение к цели
-      currentX += (targetX - currentX) * 0.1;
-      currentY += (targetY - currentY) * 0.1;
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        // Автоматическая анимация по кругу для мобилок
+        const time = Date.now() * 0.001;
+        currentX = 50 + 20 * Math.sin(time);
+        currentY = 50 + 20 * Math.cos(time);
+      } else {
+        // Плавное движение к курсору
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+      }
 
       gradient.setAttribute('cx', `${currentX}%`);
       gradient.setAttribute('cy', `${currentY}%`);
@@ -790,6 +799,8 @@
     }
 
     window.addEventListener('mousemove', (e) => {
+      if (/Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent)) return;
+
       const rect = svg.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;

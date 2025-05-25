@@ -224,9 +224,8 @@
     
     .hero-text-svg svg {
       width: 100%;
-      max-width: 1300px;
+      max-width: 1000px;
       height: auto;
-      pointer-events: auto;
     }
 
     .hero-content {
@@ -323,7 +322,7 @@
     }
 
     #glowText{
-      letter-spacing: .05em;        /* ≈ 5 % от ширины буквы */
+      letter-spacing: .03em;        /* ≈ 5 % от ширины буквы */
       text-rendering: geometricPrecision; /* улучшает кернинг в SVG */
     }
 
@@ -612,7 +611,7 @@
   <main>
     <section id="home" class="home-hero">
       <div class="hero-bg-text" id="heroText">
-        <svg id="glowSvg" viewBox="0 0 1200 300" width="100%" height="auto">
+        <svg id="glowSvg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid meet" width="100%" height="auto">
         <defs>
           <linearGradient id="baseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="rgba(255,255,255,0.70)" />
@@ -650,16 +649,17 @@
 
         <text
           id="glowText"
-          x="50%"
           y="50%"
           dominant-baseline="middle"
+          x="600"
           text-anchor="middle"
           font-size="140"
           font-family="Arial, sans-serif"
           stroke="url(#combinedGlow)"
           stroke-width="1.8"
           fill="transparent"
-          font-weight="600">
+          font-weight="600"
+          >
           Primehub
         </text>
       </svg>

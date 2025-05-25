@@ -322,6 +322,11 @@
       font-family: 'Archivo Black', sans-serif;
     }
 
+    #glowText{
+      letter-spacing: .05em;        /* ≈ 5 % от ширины буквы */
+      text-rendering: geometricPrecision; /* улучшает кернинг в SVG */
+    }
+
     /* === Карточки секций === */
     .about-cards {
       display: flex;
@@ -654,8 +659,7 @@
           stroke="url(#combinedGlow)"
           stroke-width="1.8"
           fill="transparent"
-          font-weight="600"
-          letter-spacing="4">
+          font-weight="600">
           Primehub
         </text>
       </svg>

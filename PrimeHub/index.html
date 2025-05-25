@@ -235,6 +235,21 @@
       margin-bottom: 30px;
     }
 
+    .hero-content p {
+      font-size: 1.4rem;
+      color: #ccc;
+      margin-top: 10px;
+      max-width: 700px;
+      color: #d98400; 
+      font-family: 'Cascadia Code', monospace;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+    }
+
     .hero-buttons {
       display: flex;
       gap: 20px;
@@ -666,7 +681,6 @@
       </div>
       <div class="hero-content">
         <p>Фулфилмент без прелюдий</p>
-        <p>PrimeHub — ваш цифровой узел для быстрой логистики, автоматизации и полного контроля над товарооборотом.</p>
         <div class="hero-buttons">
           <a href="#contacts" class="btn btn--light">Связаться</a>
           <a href="#about" class="btn btn--outline">Узнать больше</a>
@@ -776,8 +790,12 @@
             <h3>Локация на карте</h3>
             <div class="map-wrapper">
               <iframe
-                src="https://yandex.ru/map-widget/v1/?ll=37.724016%2C55.821052&z=16&pt=37.724016,55.821052,pm2rdm"
-                width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen>
+                src="https://yandex.ru/map-widget/v1/?ll=37.803225%2C55.706987&z=17.67&mode=poi&poi%5Bpoint%5D=37.802523%2C55.706879&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D214434786004"
+                width="100%"
+                height="300"
+                frameborder="0"
+                style="border:0;"
+                allowfullscreen>
               </iframe>
             </div>
           </div>
